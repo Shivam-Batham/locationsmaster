@@ -10,7 +10,7 @@ import { AddLocation } from '@/components/modals/addLocation';
 import UpdateProfile from '@/components/modals/updateProfile';
 
 
-export default function Navbar({ className, children }: { className?: string; children: React.ReactNode }) {
+export default function Layout({ className, children }: { className?: string; children: React.ReactNode }) {
   const [active, setActive] = useState<string | null>(null);
   const router = useRouter();
   return (
