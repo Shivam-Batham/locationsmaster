@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { cn } from "@/lib/utils";
-// import { HoveredLink } from "@/components/ui/navbar-menu";
+// import { cn } from "@/lib/utils";
 import { Menu, MenuItem } from "@/components/ui/navbar-menu";
 import { Logout } from './logout';
 import { useRouter } from 'next/navigation';
@@ -10,13 +9,18 @@ import { AddLocation } from '@/components/modals/addLocation';
 import UpdateProfile from '@/components/modals/updateProfile';
 
 
-export default function Layout({ className, children }: { className?: string; children: React.ReactNode }) {
+interface LayoutProps {
+  children: React.ReactNode;
+  // className?: string | any; 
+}
+
+export default function Layout({ children, }: LayoutProps) {
   const [active, setActive] = useState<string | null>(null);
   const router = useRouter();
   return (
     <>
       <div
-        className={cn("fixed top-5   rounded-md w-[80%]  inset-x-0 max-w-2xl mx-auto z-50", className)}
+        className={"fixed top-5   rounded-md w-[80%]  inset-x-0 max-w-2xl mx-auto z-50"}
       >
         <Menu setActive={setActive}>
           <HoverBorderGradient onClick={() => router.replace("/")}>
