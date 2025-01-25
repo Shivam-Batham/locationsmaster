@@ -19,6 +19,9 @@ export function Logout() {
                     variant: "default",
                 });
                 router.replace("/")
+                if (typeof window !== "undefined") {
+                    window.localStorage.clear();
+                }
             }
         } catch (err) {
             toast({
@@ -29,7 +32,7 @@ export function Logout() {
         }
     }
     return (
-        <HoverBorderGradient onClick={handleLogout}>
+        <HoverBorderGradient className="sm:text-normal text-xs" onClick={handleLogout}>
             Logout
         </HoverBorderGradient>
     );

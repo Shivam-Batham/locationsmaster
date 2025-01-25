@@ -57,11 +57,11 @@ function Dashboard() {
 
             {user ? (
                 <>
-                <div className="flex   items-center  justify-center  rounded-2xl w-full">
+                <div className="flex items-center  justify-center  rounded-2xl w-full">
 
                     <TextRevealCard
-                        className=" w-[80%]"
-                        text={`${user?.address}`}
+                        className=" sm:w-[80%] w-[95%]"
+                        text={`${user?.address || "India"}`}
                         revealText={`${user?.address}`}
                     >
 
@@ -70,11 +70,11 @@ function Dashboard() {
                             text={` ${user?.username},`}
                             revealText={`${user?.username}`}
                         />
-                        <TextRevealCard
+                        {user?.phone ? <TextRevealCard
                             className=" w-[100%] border-none text-4xl h-[105px] m-0 p-0"
                             text={` ${user?.phone},`}
                             revealText={`${user?.phone}`}
-                        />
+                        /> : null}
                         <TextRevealCard
                             className=" w-[100%] border-none h-[105px] m-0 p-0"
                             text={` ${user?.email},`}
@@ -82,8 +82,8 @@ function Dashboard() {
                         />
                     </TextRevealCard>
                 </div>
-                <Card className="p-2  w-[80%] m-auto mt-2">
-                <CardTitle className="text-center m-2" >Location Master Table</CardTitle>
+                <Card className="sm:p-2 p-1 sm:w-[80%] w-[95%] m-auto mt-2">
+                <CardTitle className="text-center m-2 sm:m-0" >Location Master Table</CardTitle>
                 <CardContent>
                     <LocationTable locations={user?.locations ?? []} />
                 </CardContent>
@@ -93,7 +93,11 @@ function Dashboard() {
                 
             ) : (
 
-                <div className="loader"></div>
+                <div className="flex justify-center items-center h-screen">
+                    <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-gray-500" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
             )}
             
 

@@ -67,7 +67,7 @@ export default function UpdateProfile() {
     }
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
+      <DialogTrigger asChild className="text-xs sm:text-normal">
         <HoverBorderGradient>
         <p  onClick={() => setOpen(true)}>Edit Profile</p>
         </HoverBorderGradient>

@@ -24,11 +24,11 @@ export default function Layout({ children, }: LayoutProps) {
   return (
    client && <div>
       <div
-        className={"fixed top-5   rounded-md w-[80%]  inset-x-0 max-w-2xl mx-auto z-50"}
+        className={"fixed top-5 w-[95%]   rounded-full  inset-x-0 max-w-2xl mx-auto z-50"}
       >
         <Menu setActive={setActive}>
-          <HoverBorderGradient onClick={() => router.replace("/")}>
-            Home
+          <HoverBorderGradient className="sm:text-normal text-xs"  onClick={() => router.replace("/")}>
+          Home
           </HoverBorderGradient>
           <UpdateProfile />
           <AddLocation />
