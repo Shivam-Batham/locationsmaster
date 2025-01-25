@@ -36,7 +36,7 @@ function Dashboard() {
     }
 
     useEffect(() => {
-        const id = localStorage.getItem("userId");
+        const id = (typeof window !== "undefined") ? localStorage.getItem("userId"): "";
         let clock: ReturnType<typeof setInterval> | null = null;
         if (id) {
             setUserID(id);

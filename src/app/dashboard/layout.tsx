@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { cn } from "@/lib/utils";
 import { Menu, MenuItem } from "@/components/ui/navbar-menu";
 import { Logout } from './logout';
@@ -17,8 +17,12 @@ interface LayoutProps {
 export default function Layout({ children, }: LayoutProps) {
   const [active, setActive] = useState<string | null>(null);
   const router = useRouter();
+  const [client,setClient] = useState<boolean>(false);
+  useEffect(()=>{
+    setClient(true)
+  },[])
   return (
-    <>
+   client && <div>
       <div
         className={"fixed top-5   rounded-md w-[80%]  inset-x-0 max-w-2xl mx-auto z-50"}
       >
@@ -35,7 +39,7 @@ export default function Layout({ children, }: LayoutProps) {
       >
         {children}
       </div>
-    </>
+    </div>
   );
 }
 
