@@ -20,6 +20,7 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import axiosInstance from "@/lib/axiosInstance";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+import { AxiosError } from 'axios';
 
 export default function SignInForm() {
   const router = useRouter();
@@ -39,6 +40,7 @@ export default function SignInForm() {
       const response = await axiosInstance.post("/api/user/login", data);
       if (response.status == 200) {
           localStorage.setItem("userId", response.data.user._id);
+          localStorage.setItem("username", response.data.user.username);
           localStorage.setItem("token", `${response.data.accessToken}`);
         toast({
           title: "success",
@@ -47,9 +49,11 @@ export default function SignInForm() {
         });
         router.replace("/dashboard");
       }
+      
     } catch (error) {
+      console.log(error)
       toast({
-        title: error instanceof Error ? error.message : "An error occurred",
+        title: error instanceof AxiosError ? error.response?.data?.message : "An error occurred",
         description: "Try again later.",
         variant: 'destructive',
       });
@@ -64,7 +68,7 @@ export default function SignInForm() {
       <div className=" w-full max-w-md p-8 space-y-8 bg-white rounded-[8px] shadow-md">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Welcome To the Location Master
+            Welcome To The Location Master
           </h1>
           <p className="mb-4">Sign in to continue your journey</p>
         </div>

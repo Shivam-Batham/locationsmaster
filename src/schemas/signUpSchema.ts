@@ -13,3 +13,12 @@ export const signUpSchema = z.object({
     .max(20,{message:"Password must be not more than 20 charecters"})
     
 })
+
+
+export const updateProfileSchema = z.object({
+    username:usernameValidate,
+    address:z.string().min(1,{message:"Address must not be empty"}),
+    phone:z.string().min(10,{message:"password must be at least 10 charecters"})
+    .max(20,{message:"Password must be not more than 20 charecters"})
+    
+})

@@ -64,14 +64,14 @@ function Dashboard() {
                         text={`${user?.address || "India"}`}
                         revealText={`${user?.address}`}
                     >
-
-                        <TextRevealCard
-                            className=" w-[100%] border-none text-4xl h-[105px] m-0 p-0"
-                            text={` ${user?.username},`}
+                        <h1 className="text-white text-2xl sm:text-4xl font-bold text-center ">User Profile </h1>
+                       <TextRevealCard
+                            className=" w-[100%] border-none h-[105px] m-0 p-0"
+                            text={`${user?.username}`}
                             revealText={`${user?.username}`}
                         />
                         {user?.phone ? <TextRevealCard
-                            className=" w-[100%] border-none text-4xl h-[105px] m-0 p-0"
+                            className=" w-[100%] border-none h-[105px] m-0 p-0"
                             text={` ${user?.phone},`}
                             revealText={`${user?.phone}`}
                         /> : null}
@@ -83,7 +83,7 @@ function Dashboard() {
                     </TextRevealCard>
                 </div>
                 <Card className="sm:p-2 p-1 sm:w-[80%] w-[95%] m-auto mt-2">
-                <CardTitle className="text-center m-2 sm:m-0" >Location Master Table</CardTitle>
+                <CardTitle className="text-center m-2 sm:m-0 text-2xl sm:text-4xl font-bold" >Location Master Table</CardTitle>
                 <CardContent>
                     <LocationTable locations={user?.locations ?? []} />
                 </CardContent>
